@@ -67,7 +67,7 @@ const MyAppointment = () => {
             }
         }
       }
-      const rzp=new window.Razorpay(options)
+      const rzp=new Razorpay(options)
       rzp.open()
     }
     catch(err){

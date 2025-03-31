@@ -3,14 +3,33 @@ import {assets} from '../assets/assets'
 import { useState } from 'react'
 import {NavLink,useNavigate} from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 const Navbar = () => {
     const Navigate=useNavigate();
     const [showMenu,setShowMenu]=useState(false);
-    const {token,setToken,userData}=useContext(AppContext)
+    const {backendUrl,token,setToken,userData}=useContext(AppContext)
     const logout=()=>{
           setToken('')
           Navigate('./')
           localStorage.removeItem('token')
+    }
+    const sendVerificationOtp=async()=>{
+        try{
+            axios.defaults.withCredentials=true;
+            const {data}=await axios.post(backendUrl+'/api/user/send-verify-otp')
+            console.log(data)
+            if(data.success){
+                Navigate('/email-verify')
+                toast.success(data.message)
+            }
+            else{
+                toast.error(data.message)
+            }
+        }
+        catch(err){
+            toast.error(err.message)
+        }
     }
   return (
     <div className="flex items-center justify-between text-sm py-5 mb-5 border-b-gray-40">
@@ -49,6 +68,7 @@ const Navbar = () => {
             <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
                 <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
                     <p onClick={()=>Navigate('./my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
+                    {!userData.isAccountVerified && <p onClick={sendVerificationOtp} className='hover:text-black cursor-pointer'>Verify Email</p>}
                     <p onClick={()=>Navigate('./my-appointment')} className='hover:text-black cursor-pointer'>My Appointment</p>
                     <p onClick={()=>logout()}className='hover:text-black cursor-pointer'>Logout</p>
                 </div>

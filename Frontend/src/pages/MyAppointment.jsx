@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import razorpay from "razorpay"
 const MyAppointment = () => {
   const {backendUrl,token,getDoctorsData}=useContext(AppContext)
   const [appointments,setAppointments]=useState([])
@@ -27,6 +28,7 @@ const MyAppointment = () => {
   const cancelAppointment=async(appointmentId)=>{
     try{
       const {data}=await axios.post(backendUrl+'/api/user/cancel-appointment',{appointmentId},{headers:{token}})
+      console.log(data)
       if(data.success){
         toast.success(data.message)
         getUserAppointments()
@@ -67,7 +69,7 @@ const MyAppointment = () => {
             }
         }
       }
-      const rzp=new window.Razorpay(options)
+      const rzp=new Razorpay(options)
       rzp.open()
     }
     catch(err){

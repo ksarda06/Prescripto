@@ -4,11 +4,23 @@ import axios from 'axios'
 import { toast } from "react-toastify"
 export const AppContext=createContext()
 const AppContextProvider=(props)=>{
+    axios.defaults.withCredentials=true
     const currencySymbol='$'
     const [doctors,setDoctors]=useState([])
     const [token,setToken]=useState(localStorage.getItem('token')?localStorage.getItem('token'):false)
     const [userData,setUserData]=useState(false)
     const backendUrl=import.meta.env.VITE_BACKEND_URL
+    const getAuthState=async()=>{
+        try{
+            const {data}=await axios.get(backendUrl+'/api/user/is-auth')
+            if(data.success){
+                loadUserProfileData();
+            }
+        }
+        catch(err){
+            toast.error(err.message)
+        }
+    }
     const getDoctorsData=async()=>{
         try{
             const {data}=await axios.get(backendUrl+'/api/doctor/list')
@@ -37,7 +49,7 @@ const AppContextProvider=(props)=>{
         }
         catch(err){
             console.log(err)
-            return res.json({success:false,message:err.message})
+            toast.error(err.message)
         }
     }
     const value={

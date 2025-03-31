@@ -7,9 +7,11 @@ import Contact from './pages/Contact'
 import MyProfile from './pages/MyProfile'
 import MyAppointment from './pages/MyAppointment'
 import Appointment from './pages/Appointment'
+import ResetPassword from './pages/ResetPassword'
 import {Route,Routes} from 'react-router-dom'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
+import EmailVerify from './pages/EmailVerify'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/my-profile" element={<MyProfile/>}/>
         <Route path="/my-appointment" element={<MyAppointment/>}/>
+        <Route path='/email-verify' element={<EmailVerify/>}/>
+        <Route path='/reset-password' element={<ResetPassword/>}/>
         <Route path="/appointment/:docId" element={<Appointment/>}/>
       </Routes>
       <Footer/>

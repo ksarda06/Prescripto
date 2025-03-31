@@ -16,8 +16,10 @@ const Login = () => {
     try{
        if(state==='Sign Up'){
         const {data}=await axios.post(backendUrl+'/api/user/register',{name,email,password})
+        console.log(data)
         if(data.success){
-          localStorage.setItem(data.token)
+          console.log("success");
+          localStorage.setItem(token,data.token)
           setToken(data.token)
         }
         else{
@@ -26,6 +28,7 @@ const Login = () => {
        }
        else{
         const {data}=await axios.post(backendUrl+'/api/user/login',{email,password})
+        console.log(data)
         if(data.success){
           localStorage.setItem("token",data.token)
           setToken(data.token)
@@ -64,6 +67,7 @@ const Login = () => {
           <p>Password</p>
           <input type="text" className='border border-zinc-300 rounded w-full p-2 mt-1' onChange={(e)=>setPassword(e.target.value)} value={password}/>
         </div>
+        <p onClick={()=>navigate('/reset-password')}>Forgot Password?</p>
         <button type='submit' className='bg-primary text-white w-full py-2 rounded-md text-base'>{state ==='Sign Up'?'Create Account':'Login'}</button>
         {
           state==='Sign Up'?<p>Already have an account?<span onClick={()=>setState('Login')} className='text-primary underline cursor-pointer'>Login here</span></p>:<p>Create an new account?<span onClick={()=>setState('Sign Up')} className='text-primary underline cursor-pointer'>click here</span></p>

@@ -11,10 +11,10 @@ const app=express()
 const port=process.env.PORT || 4000
 connectDB()
 connectCloudinary()
-//const allowedOrigins=['https://prescripto-a5to.onrender.com/']
+const allowedOrigins=['https://prescripto-a5to.onrender.com/','https://prescripto-admin-3uzo.onrender.com/']
 app.use(express.json())
 app.use(cookieParser())
-//app.use(cors({origin:allowedOrigins,credentials:true}))
+app.use(cors({origin:allowedOrigins,credentials:true}))
 app.use('/api/admin',adminRouter)
 app.use('/api/doctor',doctorRouter)
 app.use('/api/user',userRouter)

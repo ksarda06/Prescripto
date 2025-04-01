@@ -19,6 +19,12 @@ app.use(cors({
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true // If using cookies or authentication headers
 }));
+
+app.use(cors({
+    origin: ['https://prescripto-admin-3uzo.onrender.com'], // Allow only your frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true // If using cookies or authentication headers
+}));
 app.use('/api/admin',adminRouter)
 app.use('/api/doctor',doctorRouter)
 app.use('/api/user',userRouter)

@@ -15,7 +15,7 @@ connectCloudinary()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['https://prescripto-a5to.onrender.com/'], // Allow only your frontend
+    origin: ['https://prescripto-admin-3uzo.onrender.com'], // Allow only your frontend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true // If using cookies or authentication headers
 }));

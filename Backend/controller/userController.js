@@ -81,7 +81,7 @@ const loginUser=async(req,res)=>{
     }
     catch(err){
         console.log(err)
-        res.json({success:false,message:err.message})
+        res.json({success:false,message:"h1"})
     }
 }
 const logout=async(req,res)=>{

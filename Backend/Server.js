@@ -11,12 +11,12 @@ const app=express()
 const port=process.env.PORT || 4000
 connectDB()
 connectCloudinary()
-//const allowedOrigins=['https://prescripto-a5to.onrender.com']
+const allowedOrigins=['https://prescripto-a5to.onrender.com']
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
     //origin: ['https://prescripto-admin-3uzo.onrender.com','https://prescripto-a5to.onrender.com/'], // Allow only your frontend
-    origin:'*',
+    origin:allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true // If using cookies or authentication headers
 }));

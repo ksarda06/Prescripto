@@ -34,13 +34,14 @@ const Login = () => {
           setToken(data.token)
         }
         else{
-          toast.error(data.message)
+          console.log(data.message)
+          toast.error("H1")
         }
       }
     }
     catch(err){
       console.log(err)
-      toast.error(err.message)
+      toast.error("H2")
     }
   }
   useEffect(()=>{

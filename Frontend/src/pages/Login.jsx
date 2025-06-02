@@ -12,7 +12,7 @@ const Login = () => {
   const [password,setPassword]=useState('')
   const [name,setName]=useState('')
   const onSubmitHandler=async(event)=>{
-    //event.preventDefault()
+    event.preventDefault()
     try{
        if(state==='Sign Up'){
         const {data}=await axios.post(backendUrl+'/api/user/register',{name,email,password})

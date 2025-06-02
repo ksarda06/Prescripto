@@ -21,6 +21,7 @@ const Login = () => {
           console.log("success");
           localStorage.setItem(token,data.token)
           setToken(data.token)
+          toast.success("Account created successfully")
         }
         else{
           toast.error(data.message)
@@ -32,6 +33,7 @@ const Login = () => {
         if(data.success){
           localStorage.setItem("token",data.token)
           setToken(data.token)
+          toaast.success("Login Successfull")
         }
         else{
           console.log(data.message)

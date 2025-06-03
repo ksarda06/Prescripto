@@ -21,6 +21,7 @@ const Login = () => {
           console.log("success");
           localStorage.setItem(token,data.token)
           setToken(data.token)
+          setUserData(data)
           toast.success("Account created successfully")
         }
         else{
@@ -33,6 +34,7 @@ const Login = () => {
         if(data.success){
           localStorage.setItem("token",data.token)
           setToken(data.token)
+          setUserData(data)
           toast.success("Login Successfull")
         }
         else{
@@ -50,7 +52,6 @@ const Login = () => {
     if(token){
         console.log("Use effect ")
         loadUserProfileData()
-        setUserData(True)
         navigate('/')
     }
     else{

@@ -50,6 +50,7 @@ const Login = () => {
     if(token){
         console.log("Use effect ")
         loadUserProfileData()
+        setUserData(True)
         navigate('/')
     }
     else{

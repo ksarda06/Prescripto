@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 export const AppContext=createContext()
 const AppContextProvider=(props)=>{
     axios.defaults.withCredentials=true
-    const currencySymbol='$'
+    const currencySymbol='Rs.'
     const [doctors,setDoctors]=useState([])
     const [token,setToken]=useState(localStorage.getItem('token')?localStorage.getItem('token'):false)
     const [userData,setUserData]=useState(localStorage.getItem('token')?true:false)

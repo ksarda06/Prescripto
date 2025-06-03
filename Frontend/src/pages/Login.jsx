@@ -16,7 +16,6 @@ const Login = () => {
     try{
        if(state==='Sign Up'){
         const {data}=await axios.post(backendUrl+'/api/user/register',{name,email,password})
-        //console.log(data)
         if(data.success){
           console.log("success");
           localStorage.setItem(token,data.token)
@@ -38,26 +37,15 @@ const Login = () => {
           toast.success("Login Successfull")
         }
         else{
-          console.log(data.message)
-          toast.error("H1")
+          toast.error(data.message)
         }
       }
     }
     catch(err){
       console.log(err)
-      toast.error("H2")
+      toast.error(err)
     }
   }
-  useEffect(()=>{
-    if(token){
-        console.log("Use effect ")
-        loadUserProfileData()
-        navigate('/')
-    }
-    else{
-        setUserData(false)
-    }
-  },[token])
   return (
     <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center'>
       <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-zinc-600 text-zinc-600 text-sm shadow-lg'>

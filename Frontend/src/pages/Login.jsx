@@ -48,7 +48,11 @@ const Login = () => {
   }
   useEffect(()=>{
     if(token){
-      navigate('/')
+        loadUserProfileData()
+        navigate('/')
+    }
+    else{
+        setUserData(false)
     }
   },[token])
   return (

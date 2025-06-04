@@ -36,9 +36,10 @@ import General_physician from './General_physician.svg'
 import Gynecologist from './Gynecologist.svg'
 import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
-
+import appointmate_logo from './appointmate.png'
 
 export const assets = {
+    appointmate_logo,
     appointment_img,
     header_img,
     group_profiles,

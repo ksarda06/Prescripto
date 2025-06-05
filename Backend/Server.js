@@ -16,7 +16,8 @@ app.use(cookieParser())
 const allowedOrigins = [
   'https://prescripto-a5to.onrender.com',
   'https://prescripto-admin-3uzo.onrender.com'
-  ,'http://localhost:5173'
+  ,'http://localhost:5173',
+  'https://appointmate-a067.onrender.com'
 ];
 
 app.use(cors({
